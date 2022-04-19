@@ -1,10 +1,10 @@
-import React, { useState, useContext } from 'react';
-// import response from '../testData';
-import StarwarsContext from '../Context/StarwarsContext';
+import React, { useState/* , useContext  */ } from 'react';
+import response from '../testData';
+// import StarwarsContext from '../Context/StarwarsContext';
 
 const Table = () => {
-  const data = useContext(StarwarsContext);
-  // const data = response.results;
+  // const data = useContext(StarwarsContext);
+  const data = response.results;
 
   const [filterByName, setFilterByName] = useState('');
 
@@ -40,8 +40,10 @@ const Table = () => {
     } else if (comparision === 'igual a') {
       result = myData.filter((item) => item[column] === value);
     }
-    console.log(result);
-    selectColumn.remove(column);
+    // console.log(selectColumn.options[selectColumn.selectedIndex]);
+    selectColumn.options[selectColumn.selectedIndex].remove();
+    // expressao retirada de https://stackoverflow.com/questions/41928509/remove-selected-value-in-dropdown-list-using-javascript
+
     setMyData(result);
   };
 
