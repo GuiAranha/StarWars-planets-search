@@ -1,10 +1,10 @@
 import React, { useState, useContext } from 'react';
-import response from '../testData';
+// import response from '../testData';
 import StarwarsContext from '../Context/StarwarsContext';
 
 const Table = () => {
-  // let data = useContext(StarwarsContext);
-  const data = response.results;
+  const data = useContext(StarwarsContext);
+  // const data = response.results;
 
   const [filterByName, setFilterByName] = useState('');
 
@@ -30,7 +30,9 @@ const Table = () => {
   const filterButton = () => {
     console.log(filterByNumericValue);
     let result = myData;
+    const selectColumn = document.getElementById('column');
     const { comparision, value, column } = filterByNumericValue;
+
     if (comparision === 'menor que') {
       result = myData.filter((item) => item[column] < Number(value));
     } else if (comparision === 'maior que') {
@@ -39,6 +41,7 @@ const Table = () => {
       result = myData.filter((item) => item[column] === value);
     }
     console.log(result);
+    selectColumn.remove(column);
     setMyData(result);
   };
 
@@ -52,6 +55,7 @@ const Table = () => {
 
       <select
         name="column"
+        id="column"
         defaultValue="population"
         data-testid="column-filter"
         onChange={ handleChangeInput }
