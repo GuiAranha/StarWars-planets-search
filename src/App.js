@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import StarwarsContext from './Context/StarwarsContext';
 import fetchPlanets from './Services/planetsApi';
@@ -12,7 +12,9 @@ function App() {
     setPlanets(planets);
   }
 
-  getPlanets();
+  useEffect(() => {
+    getPlanets();
+  });
 
   return (
     <StarwarsContext.Provider value={ data }>
