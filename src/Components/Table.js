@@ -29,14 +29,14 @@ const Table = () => {
 
   const filterButton = () => {
     console.log(filterByNumericValue);
-    let result = ({});
+    let result = myData;
     const { comparision, value, column } = filterByNumericValue;
     if (comparision === 'menor que') {
-      result = data.filter((item) => item[column] < Number(value));
+      result = myData.filter((item) => item[column] < Number(value));
     } else if (comparision === 'maior que') {
-      result = data.filter((item) => item[column] > Number(value));
+      result = myData.filter((item) => item[column] > Number(value));
     } else if (comparision === 'igual a') {
-      result = data.filter((item) => item[column] === value);
+      result = myData.filter((item) => item[column] === value);
     }
     console.log(result);
     setMyData(result);
